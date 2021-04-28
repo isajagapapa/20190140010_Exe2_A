@@ -21,9 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private TemanAdapter adapter;
     private ArrayList<Teman> temanArrayList;
-    private Context context;
     DBController controller = new DBController(this);
-    String id,nm,tlp;
     private FloatingActionButton fab;
 
     @Override
