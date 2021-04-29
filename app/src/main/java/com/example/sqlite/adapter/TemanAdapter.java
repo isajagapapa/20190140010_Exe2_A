@@ -20,6 +20,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sqlite.EditTeman;
+import com.example.sqlite.LihatTeman;
 import com.example.sqlite.MainActivity;
 import com.example.sqlite.R;
 import com.example.sqlite.TemanBaru;
@@ -91,6 +92,17 @@ public class TemanAdapter extends RecyclerView.Adapter<TemanAdapter.TemanViewHol
                 });
                 pm.show();
                 return true;
+            }
+        });
+
+        holder.cardku.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(context, LihatTeman.class);
+                it.putExtra("id", id);
+                it.putExtra("nama", nm);
+                it.putExtra("telpon", tlp);
+                context.startActivity(it);
             }
         });
     }
