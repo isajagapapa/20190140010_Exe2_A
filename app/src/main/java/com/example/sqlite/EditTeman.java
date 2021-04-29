@@ -31,7 +31,7 @@ public class EditTeman extends AppCompatActivity {
 
         id = getIntent().getStringExtra("id");
         nm = getIntent().getStringExtra("nama");
-        tlp = getIntent().getStringExtra("telepon");
+        tlp = getIntent().getStringExtra("telpon");
 
         setTitle("Edit Data");
         tNama.setText(nm);

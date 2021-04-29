@@ -74,7 +74,7 @@ public class TemanAdapter extends RecyclerView.Adapter<TemanAdapter.TemanViewHol
                                 Intent i = new Intent(context, EditTeman.class);
                                 i.putExtra("id", id);
                                 i.putExtra("nama", nm);
-                                i.putExtra("telepon", tlp);
+                                i.putExtra("telpon", tlp);
                                 context.startActivity(i);
                                 break;
                             case R.id.hapus:
