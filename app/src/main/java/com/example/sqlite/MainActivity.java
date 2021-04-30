@@ -1,13 +1,16 @@
 package com.example.sqlite;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
 
 import com.example.sqlite.adapter.TemanAdapter;
 import com.example.sqlite.database.DBController;
@@ -23,6 +26,19 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<Teman> temanArrayList;
     DBController controller = new DBController(this);
     private FloatingActionButton fab;
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //Method untuk menampilkan menu
+        getMenuInflater().inflate(R.menu.info_pm, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.pmInfo){
+            callInfo();
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,5 +79,19 @@ public class MainActivity extends AppCompatActivity {
             //pindahkan dari Teman ke dalam ArrayList teman di adapter
             temanArrayList.add(teman);
         }
+    }
+
+    public void callInfo(){
+        final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setMessage("* Klik pada card untuk melihat detail data. \n" +
+                "* Klik dan tahan pada card untuk edit/hapus data.");
+        builder.setCancelable(true);
+        builder.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        builder.show();
     }
 }
