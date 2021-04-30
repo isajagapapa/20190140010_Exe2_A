@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
     private FloatingActionButton fab;
 
     public boolean onCreateOptionsMenu(Menu menu) {
-        //Method untuk menampilkan menu
         getMenuInflater().inflate(R.menu.info_pm, menu);
         return super.onCreateOptionsMenu(menu);
     }
