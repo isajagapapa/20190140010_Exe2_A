@@ -79,12 +79,27 @@ public class TemanAdapter extends RecyclerView.Adapter<TemanAdapter.TemanViewHol
                                 context.startActivity(i);
                                 break;
                             case R.id.hapus:
-                                HashMap<String,String> qvalues =  new HashMap<>();
-                                qvalues.put("id", id);
-                                db.deleteData(qvalues);
-                                Toast.makeText(context, "Data Berhasil Dihapus", Toast.LENGTH_SHORT).show();
-                                Intent in = new Intent(context, MainActivity.class);
-                                context.startActivity(in);
+                                final AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                                builder.setMessage("Apakah Anda Yakin Untuk Menghapus Data " + nm + "?");
+                                builder.setCancelable(true);
+                                builder.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.cancel();
+                                    }
+                                });
+                                builder.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        HashMap<String,String> qvalues =  new HashMap<>();
+                                        qvalues.put("id", id);
+                                        db.deleteData(qvalues);
+                                        Toast.makeText(context, "Data Berhasil Dihapus", Toast.LENGTH_SHORT).show();
+                                        Intent in = new Intent(context, MainActivity.class);
+                                        context.startActivity(in);
+                                    }
+                                });
+                                builder.show();
                                 break;
                         }
                         return true;
